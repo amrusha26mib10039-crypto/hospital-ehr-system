@@ -2,6 +2,7 @@
 
 from patient import register_patient, view_patient
 from doctor import doctor_section
+from chemist import chemist_section
 
 # Dictionary to store patient records
 patients_db = {}
@@ -27,7 +28,7 @@ while True:
         doctor_section(patients_db)
 
     elif choice == "3":
-        print("Chemist section will be added soon.")
+        chemist_section(patients_db)
 
     elif choice == "4":
         view_patient(patients_db)
