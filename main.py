@@ -1,6 +1,7 @@
 # Hospital EHR System
 
 from patient import register_patient, view_patient
+from doctor import doctor_section
 
 # Dictionary to store patient records
 patients_db = {}
@@ -23,7 +24,7 @@ while True:
         register_patient(patients_db)
 
     elif choice == "2":
-        print("Doctor section will be added soon.")
+        doctor_section(patients_db)
 
     elif choice == "3":
         print("Chemist section will be added soon.")
