@@ -1,8 +1,8 @@
 # Chemist Module
 
 def chemist_section(patients_db):
-
-    print("\n===== CHEMIST SECTION =====")
+    
+    print("\n====== CHEMIST SECTION ======")
 
     patient_id = input("Enter Patient ID: ")
 
@@ -10,7 +10,7 @@ def chemist_section(patients_db):
 
         patient = patients_db[patient_id]
 
-        print("\n===== PRESCRIPTION =====")
+        print("\n==== PRESCRIPTION ====")
         print("Patient Name:", patient["name"])
         print("Patient ID:", patient_id)
         print("Diagnosis:", patient.get("diagnosis", "Not available"))
@@ -22,29 +22,26 @@ def chemist_section(patients_db):
             print("\nNo medicines prescribed.")
             return
 
-        print("\nMedicines:")
+        print("\n==== BILL GENERATION ====")
 
-        for i, medicine in enumerate(medicines, start=1):
-            print(i, ".", medicine)
-
-        print("\n===== MEDICINE STATUS =====")
-
-        medicine_status = []
+        total = 0
 
         for medicine in medicines:
+            price = float(input(f"Enter price for {medicine}: ₹"))
+            total += price
 
-            answer = input(
-                f"Has {medicine} been given? (yes/no): "
-            )
+        print("\n=========== BILL ===========")
+        print("Patient Name:", patient["name"])
+        print("Patient ID:", patient_id)
 
-            if answer.lower() == "yes":
-                medicine_status.append("Given")
-            else:
-                medicine_status.append("Not Given")
+        print("\nMedicines:")
+        for medicine in medicines:
+            print("-", medicine)
 
-        patient["medicine_status"] = medicine_status
+        print("\nTotal Amount: ₹", total)
+        print("==========================")
 
-        print("\nPrescription updated successfully!")
+        print("\nBill generated successfully!")
 
     else:
         print("\nPatient not found!")
